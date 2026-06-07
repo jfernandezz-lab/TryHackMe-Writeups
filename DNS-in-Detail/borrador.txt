@@ -1,0 +1,49 @@
+Tarea 1: What is DNS?
+- Concepto: Es el sistema que traduce nombres de dominio legibles para humanos (ej. tryhackme.com) en direcciones IP numéricas (ej. 104.26.10.229) para que las computadoras se comuniquen.
+- IP analizada en el texto: 104.26.10.229 (4 octetos de 0 a 255).
+- Respuesta pregunta 1: Domain Name System
+
+Tarea 2: Jerarquía de Dominios (Estructura de derecha a izquierda)
+- TLD (Top-Level Domain): Extensión final (.com, .net). Dividido en gTLD (propósito) y ccTLD (país).
+- SLD (Second-Level Domain): El nombre principal (ej. tryhackme). Max 63 caracteres. Solo a-z, 0-9 y guiones (no al inicio/final ni consecutivos).
+- Subdominio: Prefijo a la izquierda del SLD para segmentar servicios (ej. admin). Límite total del FQDN: 253 caracteres.
+
+Tarea 3: DNS Record Types
+- A: Mapea dominios a IPv4.
+- AAAA: Mapea dominios a IPv6.
+- CNAME: Alias que apunta a otro nombre de dominio.
+- MX: Define los servidores de correo (Mail Exchange) con flags de prioridad.
+- TXT: Texto plano. Clave en ciberseguridad para validación de dominio y reglas anti-phishing (SPF/DMARC).
+
+Tarea 4: Making A Request
+- Flujo de consulta: Local Cache -> Recursive (ISP) -> Root -> TLD -> Authoritative.
+- TTL (Time To Live): Valor en segundos que define la duración del registro en caché antes de expirar.
+- Servidor Recursivo: Hace la búsqueda en cadena. Provisto comúnmente por el ISP.
+- Servidor Autoritativo: Servidor final que contiene la base de datos real y definitiva del dominio.
+
+Tarea 5: DNS Practical (Uso de Herramientas de Consulta)
+- Objetivo: Utilizar un simulador de la herramienta nslookup para realizar consultas DNS sobre el dominio "website.thm" y extraer registros específicos (A, CNAME, MX, TXT).
+
+[Consultas ejecutadas en el simulador]:
+1. Consulta CNAME para el subdominio "shop":
+   - Tipo seleccionado: CNAME
+   - Subdomain ingresado: shop
+   - Concepto: Se buscó el alias del subdominio de la tienda, el cual apunta a un servidor externo (formato: shops.shopify.com o similar según la estructura de guiones).
+
+2. Consulta TXT para el dominio raíz "website.thm":
+   - Tipo seleccionado: TXT
+   - Subdomain ingresado: [Vacío]
+   - Concepto: Las consultas TXT en auditorías de seguridad se usan para verificar registros de validación (SPF/DMARC) o, en este caso de CTF, para extraer la bandera oculta en formato THM{...}.
+
+3. Consulta MX para el dominio raíz "website.thm":
+   - Tipo seleccionado: MX
+   - Subdomain ingresado: [Vacío]
+   - Concepto: Devuelve los servidores de intercambio de correo electrónico asociados al dominio. La respuesta incluye un valor numérico entero que representa la prioridad del servidor (a menor número, mayor prioridad).
+
+4. Consulta A para el subdominio "www":
+   - Tipo seleccionado: A
+   - Subdomain ingresado: www
+   - Concepto: Resolución estándar de nombre a dirección IP. Traduce "www.website.thm" a su correspondiente dirección IPv4 pública (formato: X.X.X.X).
+
+[Lecciones del laboratorio práctico]:
+- Al usar herramientas de consola como nslookup o dig, si el dominio base ya está preconfigurado por la herramienta, solo se debe pasar el subdominio ("shop", "www") para evitar errores de resolución del tipo NXDOMAIN (Non-Existent Domain).

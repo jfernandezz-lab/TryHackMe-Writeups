@@ -1,1 +1,26 @@
+Tarea 1: Introducción al rol de Junior Security Analyst (L1).
+- Operan en un equipo 24/7 para cubrir incidentes a cualquier hora.
+- Tareas principales: Monitoreo de alertas, investigación y mitigación inicial.
+- Respuesta pregunta 1: 24/7 team
 
+Tarea 2: El equipo del SOC y roles principales
+- Senior Analyst: Soporte para alertas complejas y escalado de incidentes.
+- SOC Engineer: Configura herramientas, SIEM y reglas de alerta. No analiza logs diarios.
+- SOC Manager: Gestión, reportes a directivos y control general del área.
+- Incident Responder: Activación bajo demanda ante incidentes críticos/mayores.
+- Nota: Tarea de lectura conceptual. Completada sin flag.
+
+Tarea 3: Simulación Práctica de Analista de SOC (Día en la vida)
+- Objetivo: Investigar alertas de seguridad, validar ciberinteligencia, escalar el incidente y mitigar la amenaza en el perímetro.
+
+1. Monitoreo en SIEM: Al revisar el "SIEM Dashboard", identifiqué un volumen inusual de alertas críticas relacionadas con un intento de explotación del fallo Log4j dirigido a nuestros servidores web.
+2. Identificación de la Amenaza: Aislé la dirección IP de origen de los ataques. La IP maliciosa detectada en los logs fue la "268.23.235.1" (IP simulada por el laboratorio).
+3. Ciberinteligencia (OSINT / Threat Intel): Moví la IP sospechosa a la herramienta "IP Hunter". La base de datos de reputación confirmó un score malicioso alto, validando que se trataba de un ataque real y no de un falso positivo.
+4. Escalado de Incidentes: Con la amenaza confirmada, utilicé la pestaña de "Escalation" para reportar formalmente el evento. Siguiendo la jerarquía del SOC, le escalé el caso a Will Griffin (Senior Analyst) para su aprobación.
+5. Mitigación en Firewall: Una vez aprobada la solicitud de escalado por el analista L2/L3, accedí al "Firewall" perimetral de la empresa. Ingresé la IP del atacante y ejecuté una regla de bloqueo ("Block") para cortarle el acceso a la red.
+6. Cierre del Incidente: Al aplicar el bloqueo, el Firewall neutralizó el ataque y me arrojó la flag/mensaje de éxito final de la sala: THM{SOC_AGENT_ACTIVATED}.
+
+[Conceptos Clave Aprendidos]:
+- El SIEM es la herramienta principal para centralizar logs y visibilizar ataques.
+- No se debe bloquear ninguna IP sin antes validar su reputación (IP Hunter) para evitar denegarle el acceso a usuarios legítimos (falsos positivos).
+- El analista L1 investiga y clasifica; las acciones críticas perimetrales (Firewall) requieren un proceso formal de escalado dentro de la cadena de mando del SOC.

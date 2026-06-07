@@ -1,11 +1,11 @@
-# 🛡️ TryHackMe: Junior Security Analyst Intro
+#  TryHackMe: Junior Security Analyst Intro
 
-## 📋 Descripción del Laboratorio
+##  Descripción del Laboratorio
 Este laboratorio práctico simula el día a día de un **Analista de Seguridad de Nivel 1 (L1)** dentro de un **SOC (Security Operations Center)**. El objetivo principal fue interactuar con las herramientas centrales de monitoreo y defensa perimetral para identificar, validar, escalar y mitigar un intento de explotación real en los servidores de la organización.
 
 ---
 
-## 👥 Estructura y Roles de un SOC
+##  Estructura y Roles de un SOC
 Durante la sesión se analizaron las interacciones y jerarquías clave dentro del equipo defensivo:
 
 *   **Junior Security Analyst (L1):** Primera línea de defensa encargada del monitoreo constante de alertas las 24 horas, los 7 días de la semana (**24/7 team**).
@@ -16,7 +16,7 @@ Durante la sesión se analizaron las interacciones y jerarquías clave dentro de
 
 ---
 
-## 🕵️‍♂️ Resolución del Incidente: Paso a Paso
+##  Resolución del Incidente: Paso a Paso
 
 El ejercicio práctico presentó un escenario de ataque activo que requería seguir el flujo metodológico de un analista defensivo:
 
@@ -39,11 +39,11 @@ Tras recibir la autorización del escalado, se tomó control del **Firewall** pe
 ### 6. Cierre y Flag de Éxito
 Una vez que el perímetro fue securizado y el ataque neutralizado, el sistema validó el procedimiento arrojando la confirmación del éxito:
 
-> 🔑 **Flag Obtenida:** `THM{SOC_AGENT_ACTIVATED}`
+>  **Flag Obtenida:** `THM{SOC_AGENT_ACTIVATED}`
 
 ---
 
-## 💡 Conceptos Clave Aprendidos
+##  Conceptos Clave Aprendidos
 
 1.  **Centralización de Logs:** El **SIEM** es indispensable en el SOC, ya que sin un panel centralizado sería imposible correlacionar alertas provenientes de distintas fuentes en tiempo real.
 2.  **Importancia del Triage:** Jamás se deben tomar medidas drásticas de bloqueo perimetral basándose únicamente en la primera alerta del sistema. El uso de herramientas de reputación (**Threat Intelligence**) es mandatorio para proteger la disponibilidad del negocio y evitar bloquear tráfico legítimo (falsos positivos).
